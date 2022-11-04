@@ -25,7 +25,7 @@ cargo run zgrossbart
 This will run the application and produce an output like this:
 
 ```
-Compiling simple-rest-client v0.1.1 (/Users/zackgrossbart/work/tmp/simple-rust-client)
+Compiling simple-rest-client v0.1.1 (/Users/zackgrossbart/simple-rust-client)
 Finished dev [unoptimized + debuginfo] target(s) in 1.08s
 Running `target/debug/simple-rest-client zgrossbart`
 
