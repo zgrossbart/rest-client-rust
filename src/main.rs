@@ -80,8 +80,11 @@ Name:      {name}
             followers = user.followers,
             repos = user.public_repos
         );
-    } else {
-        println!("{} is not a user!", user_name);
+	} else if response.status() == 404 {
+		println!("{} is not a user!", user_name);
+	} else {
+		let text:String = response.text().await?;
+        println!("There was an error accessing the API \n\n{}", text);
     }
 
     Ok(())
