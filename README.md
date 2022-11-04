@@ -1,6 +1,8 @@
 # Simple Rest Client
 
-This simple REST client is written in [Rust](https://www.rust-lang.org/) and was created as a sample and teaching tool for team learning.
+This simple REST client is written in [Rust](https://www.rust-lang.org/) and was created as a sample and teaching tool.  I wrote this sample for a learning session I did with my team on Rust.  
+
+This sample encompasses what a room full of Java, Python, and JavaScript programmers should know as an introduction to Rust.  ...but before we look at what we can learn from this example here's how to get it up and running.
 
 ## Running the Rest Client
 
@@ -43,3 +45,9 @@ zgrossbart has 35 repositories and 103 followers
 ```
 
 Try it out with any other username on github.com.  
+
+## Key Points of This Sample
+
+Here are some key points to take away from this sample:
+
+**Rust is a specialized lanauge**.  It provides a lot of safety and speed, but it asks a lot up front to provide that.  Everything in Rust must be 
