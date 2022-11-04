@@ -196,6 +196,14 @@ The concern is that one of the calls may be changing the object in a way that th
 
 Now we'll expand the example to add an optional parameter to our client.  The REST API has a field called `email`, but it's `null` for many users.  In a language like Python we could just include that, but with the extra type checking of Rust it takes a little more work.  
 
+You could just add the `email` field to the `User` struct, but when the field wasn't in the JSON response you'd get a runtime error like this:
+
+```
+Error: reqwest::Error { kind: Decode, source: Error("invalid type: null, expected a string", line: 1, column: 1045) }
+```
+
+That error is basically telling you that the `email` field was supposed to be a string and it was null instead.  Let's look at how to handle an optional field.
+
 You can see this example by checking out the `with-option` branch with a command like this:
 
 ```
