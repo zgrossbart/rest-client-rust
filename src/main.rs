@@ -9,6 +9,7 @@ use colored::Colorize;
  * This structure defines our User object.  The names of the fields
  * must match the fields from the JSON data returned by the API.
  */
+#[serde_with::skip_serializing_none]
 #[derive(Deserialize, Debug)]
 struct User {
     login: String,
@@ -16,6 +17,7 @@ struct User {
     id: u32,
     followers: u32,
     public_repos: u32,
+	email: Option<String>,
 }
 
 /*
@@ -65,9 +67,12 @@ async fn main() -> Result<()> {
             "
 {title}
 
-ID:        {id}
-Login:     {login}
-Name:      {name}
+User Data For: {username}
+
+ID:     {id}
+Login:  {login}
+Name:   {name}
+Email:  {email}
 
 {username} has {repos} repositories and {followers} followers
 
@@ -78,7 +83,8 @@ Name:      {name}
             login = user.login,
             name = user.name,
             followers = user.followers,
-            repos = user.public_repos
+            repos = user.public_repos,
+			email = user.email.unwrap_or("<The email isn't set>".to_string())
         );
     } else {
         println!("{} is not a user!", user_name);
