@@ -25,9 +25,9 @@ cargo run zgrossbart
 This will run the application and produce an output like this:
 
 ```
-Compiling simple-rest-client v0.1.1 (/Users/zackgrossbart/simple-rust-client)
+Compiling simple-rest-client v0.1.1 (/Users/zackgrossbart/rest-client-rust)
 Finished dev [unoptimized + debuginfo] target(s) in 1.08s
-Running `target/debug/simple-rest-client zgrossbart`
+Running `target/debug/rest-client-rust zgrossbart`
 
 Getting GitHub user data for: zgrossbart
 request_url: https://api.github.com/users/zgrossbart
