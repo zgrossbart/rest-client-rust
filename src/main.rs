@@ -17,7 +17,7 @@ struct User {
     id: u32,
     followers: u32,
     public_repos: u32,
-	email: Option<String>,
+    email: Option<String>,
 }
 
 /*
