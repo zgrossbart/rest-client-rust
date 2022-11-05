@@ -1,3 +1,21 @@
+/*******************************************************************************
+ *
+ * Copyright 2022 Zack Grossbart
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ ******************************************************************************/
+
 use reqwest::ClientBuilder;
 use reqwest::Result;
 use serde::Deserialize;
@@ -86,8 +104,11 @@ Email:  {email}
             repos = user.public_repos,
 			email = user.email.unwrap_or("<The email isn't set>".to_string())
         );
-    } else {
-        println!("{} is not a user!", user_name);
+	} else if response.status() == 404 {
+		println!("{} is not a user!", user_name);
+	} else {
+		let text:String = response.text().await?;
+        println!("There was an error accessing the API \n\n{}", text);
     }
 
     Ok(())
