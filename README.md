@@ -121,7 +121,7 @@ if args.len() != 2 {
 }
 ```
 
-The call to the `dbg!` macro is commmented out, but if we uncommented it then we would see the list of arguments when we ran the program.  What would happen if we uncommented the line and removed the `&` like this:
+The call to the `dbg!` macro is commented out, but if we uncommented it then we would see the list of arguments when we ran the program.  What would happen if we uncommented the line and removed the `&` like this:
 
 ```rust
 let args: Vec<String> = env::args().collect();
@@ -150,7 +150,7 @@ error[E0382]: borrow of moved value: `args`
 
 This is an interesting error.  The problem is that we're passing the variable `args` directly to the `dbg!` macro.  We don't know if that variable will be changed by the function and the Rust runtime can't copy the value because `Vec` doesn't support it.  That would be OK if we never use the `args` variable again, but when we use it a couple of lines later to check the length of the arguments passed in then the Rust compiler throws an error.
 
-I've had this exact experience in Java.  I passed an `ArrayList` to another method and didn't expect the other method to change the list.  It did and then my program manfunctioned.  The Rust compiler is making sure you don't run into this problem and turning a potential run-time error into a compile-time error.
+I've had this exact experience in Java.  I passed an `ArrayList` to another method and didn't expect the other method to change the list.  It did and then my program malfunctioned.  The Rust compiler is making sure you don't run into this problem and turning a potential run-time error into a compile-time error.
 
 ### `value used here after move`
 
@@ -189,7 +189,7 @@ This error in Rust is magical.  Basically it's tell us that the `response` objec
 let user: User = response.json().await?;
 ```
 
-The concern is that one of the calls may be changing the object in a way that the other doesn't anticiapte.  This may seem like an unlikely case, but I've had to debug this specific problem and it was very difficult to understand what was wrong.
+The concern is that one of the calls may be changing the object in a way that the other doesn't anticipate.  This may seem like an unlikely case, but I've had to debug this specific problem and it was very difficult to understand what was wrong.
 
 
 ## Add an Optional Parameter
@@ -237,7 +237,7 @@ Lastly we need to pass in the value for this field like this:
 email = user.email.unwrap_or("<The email isn't set>".to_string())
 ```
 
-It's interesting to see that we need to use the `unwrap_or` function here or the compiler will give us an error because the `user.email` field could be null.  The option option would be to specify the `email` paramater with some extra details to allow the compiler to know it could be null like this:
+It's interesting to see that we need to use the `unwrap_or` function here or the compiler will give us an error because the `user.email` field could be null.  The option option would be to specify the `email` parameter with some extra details to allow the compiler to know it could be null like this:
 
 ```rust
 Email:  {email:?}
