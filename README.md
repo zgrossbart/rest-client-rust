@@ -50,7 +50,7 @@ Try it out with any other username on github.com.
 
 Here are some key points to take away from this sample:
 
-**Rust is a specialized lanauge**.  It provides a lot of safety and speed, but it asks a lot up front.
+**Rust is a specialized language**.  It provides a lot of safety and speed, but it asks a lot up front.
 
 **Rust isn't a good first programming language**.  Rust expects you to have a lot of knowledge of programming languages.  An easy example of that is the `&` operator and the need to understand pointers.
 
